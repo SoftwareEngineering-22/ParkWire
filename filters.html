@@ -10,6 +10,10 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
         <style>
+
+            .body{
+                background: dark;
+            }
             .navbar{
                 /* fallback for old browsers */
                 background: #3e1010;
@@ -93,7 +97,7 @@
     </head>
 
 
-    <body>
+    <body class="bg-dark">
         <nav class="navbar navbar-expand-sm navbar-dark py-3 fixed-top">
             <div class="container">
                 <a class="navbar-brand" href="#">
@@ -120,23 +124,43 @@
                     </ul>
                 </div>
             </div>
-        </nav> <br> <br> <br> 
+        </nav> 
 
-        <section class="vh-200 gradient-custom bg-dark">
-            <div class="mx-auto" style="width: 300px;">
-                <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                    <div class="mb-md-5 mt-md-4 pb-5">
-                        <br><br>
-                        <h3 style="color: white;">Filters</h3>
-                        <div class="filter-item">
-                            Show only free parking &#9
-                            <label class="switch">
-                                <input type="checkbox">
-                                <span class="slider round"></span>
-                            </label>
-                        </div>
-                    </div>
-                </div>            
-            </div>
-        </section>
+        <div class="mx-auto" style="width: 300px;">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">                    
+                <br><br><br><br><br> 
+                <h3 style="color: white;">Filters</h3>
+                <br>
+                <div class="filter-item">
+                    Range from location 
+                    <select class="form-control form-control-sm" id="range">
+                        <option>50m</option>
+                        <option>100m</option>
+                        <option>200m</option>
+                        <option>300m</option>
+                        <option>400m</option>
+                        <option>500m</option>
+                        <option>600m</option>
+                        <option>700m</option>
+                        <option>800m</option>
+                        <option>900m</option>
+                        <option>1km</option>
+                    </select>
+                </div><br>
+                <div class="filter-item">
+                    Show only free parking
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                </div><br>
+                <div class="filter-item">
+                    Show only street parking 
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>            
+        </div>
     </body>
