@@ -30,7 +30,7 @@
 
 <body>
     <section class="vh-200 gradient-custom">
-        <div class="container py-5 h-100">
+        <form class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-12 col-md-8 col-lg-6 col-xl-5">
                     <div class="card bg-dark text-white" style="border-radius: 1rem;">
@@ -42,27 +42,27 @@
                                 <p class="text-white-50 mb-5">Sign Up!</p>
 
                                 <div class="form-outline form-white mb-4">
-                                    <input type="email" id="typeEmailX" class="form-control form-control-lg" />
                                     <label class="form-label" for="typeEmailX">Email</label>
+                                    <input type="email" id="typeEmailX" class="form-control form-control-lg" />
                                 </div>
   
                                 <div class="form-outline form-white mb-4">
-                                    <input type="username" id="typeUsernameX" class="form-control form-control-lg" />
                                     <label class="form-label" for="typeUsernameX">Username</label>
+                                    <input type="username" id="typeUsernameX" class="form-control form-control-lg" />
                                 </div>
   
                                 <div class="form-outline form-white mb-4">
+                                    <label class="form-label" for="typePasswordX">Password</label>
                                     <input type="password" name="typePasswordX" 
                                     class="form-control form-control-lg"
                                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,}" 
                                     title="Must contain at least one number and one uppercase and lowercase letter, at least 8 or more characters and a special character." required>
-                                    <label class="form-label" for="typePasswordX">Password</label>
                                 </div>
 
                                 <div class="form-outline form-white mb-1">
-                                    <input type="password" id="typeReEnterPasswordX" class="form-control form-control-lg" />
                                     <label class="form-label" for="typeReEnterPasswordX">Re-Enter your Password</label>
-                                </div>
+                                    <input type="password" id="typeReEnterPasswordX" class="form-control form-control-lg" />
+                                </div><br><br>
                                 <div>
                                     <button class="btn btn-outline-light btn-lg px-5" type="submit">Sign Up</button>
                                 </div>
@@ -88,7 +88,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
     </section>
 </html>
 
