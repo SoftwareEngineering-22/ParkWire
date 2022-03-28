@@ -8,16 +8,18 @@
 
 
         <style>
-            .gradient-custom {
-            /* fallback for old browsers */
-            background: #3e1010;
+           .navbar{
+                /* fallback for old browsers */
+                background: #3e1010;
 
-            /* Chrome 10-25, Safari 5.1-6 */
-            background: -webkit-linear-gradient(to right, #3e1010, #b62c2b);
+                /* Chrome 10-25, Safari 5.1-6 */
+                background: -webkit-linear-gradient(to right, #b62c2b, #3e1010);
 
-            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-            background: linear-gradient(to right, #3e1010, #b62c2b)
+                /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+                background: linear-gradient(to right, #b62c2b, #3e1010)
             }
+
+           
         </style>
 <title>Homepage</title>
 </head>
@@ -30,13 +32,13 @@
     }
     
 </style>
-<body>
+<body class="bg-dark">
+  <!--
+
   
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark py-3 fixed-top">
   <div class="container">
-    <a class="navbar-brand" href="#">
-        <img src="logo.png" alt="Avatar Logo" style="width:40px;" class="rounded-pill"> 
-      </a>
+    
     <button
       class="navbar-toggler"
       type="button"
@@ -49,41 +51,82 @@
     
     <ul class="navbar-nav ms-auto">
         <li class="nav-item">
+          <a class="navbar-brand" href="#">
+            <img src="parkwire/user.png" alt="Avatar Logo" style="width:40px;" class="rounded-pill"> 
+          </a>
            
-          <a href='settings.html'><img src=questionmark.png></a>    
-        </li>
+         
     </ul>
    
     </div>
   </div>
 </nav><br><br><br>
+-->
   
+<body class="bg-dark">
 
+
+  <nav class="navbar navbar-expand-sm navbar-dark py-3 fixed-top">
+      <div class="container">
+          <a class="navbar-brand" href="#">
+              <img src="parkwire/parkwireBNB&T.png" alt="Red Car Logo" style="width:40px;" class="rounded-pill"> 
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+          <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navmenu">
+              <ul class="navbar-nav ms-auto">
+                  <li class="nav-item">
+
+                      <form class="d-flex">
+                          <input class="form-control me-2" type="search" placeholder="Search Location..." aria-label="Search">
+                          <button class="btn btn-outline-light" type="submit">Search</button>
+                      </form>
+                  </li>
+              </ul>
+              <ul class="navbar-nav ms-auto">
+                <a class="navbar-brand" href="#">
+                  <img src="parkwire/user.png" alt="Avatar Logo" style="width:40px;" class="rounded-pill"> 
+                </a>
+                  <li class="nav-item">
+                    
+                      <a class="nav-link active text-white" aria-current="page" href="#">Back</a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </nav> 
+  <br><br><br><br><br> 
   
 
 <section class="vh-200 gradient-custom">
  
-    <div class="container py-5 h-100">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                <div class="card bg-dark text-white" style="border-radius: 1rem;">
-                    <div class="card-body p-5 text-center">
-
-                        <div class="mb-md-5 mt-md-4 pb-5">
+   
+  <div class="mx-auto" style="width: 600px;">
+    <div class="col-12 col-md-8 col-lg-6 col-xl-5">  
+                       
                             <h2 class="fw-bold mb-3">Hi, User! Ready to Park?</h2><br>
 
 
        
-                            <button class="btn btn-outline-light btn-lg px-5" type="submit" style="width:300px;"> Parking Near Me! &#128205  </button><br><br>
-                            <button class="btn btn-outline-light btn-lg px-5" type="submit">Parking Near Work! &#128188</button><br><br>
-                            <button class="btn btn-outline-light btn-lg px-5" type="submit">Parking Near Home!  &#127968</button><br><br>
+                            <button class="btn btn-outline-light btn-lg px-5" type="submit" style="width:500px;"> Parking Near Me! &#128205  </button><br><br>
+                            <button class="btn btn-outline-light btn-lg px-5" type="submit"style="width:500px;">Parking Near Work! &#128188</button><br><br>
+                            <button class="btn btn-outline-light btn-lg px-5" type="submit" style="width:500px;">Parking Near Home!  &#127968</button><br><br>
 
- <form class="d-flex">
-  <input class="form-control me-2" type="search" placeholder="Search Location..." aria-label="Search">
- <button class="btn btn-outline-light" type="submit">Search</button>
-</form>
-    </span>
-  </div>
+                            <form class="d-flex">
+                            <input class="form-control me-2" type="search"  placeholder="Search Location..." aria-label="Search">
+                            <button class="btn btn-outline-light" type="submit">Search</button>
+                            </form>
+
+    </div>
+   </div>
+
+                      
+              
+            
+          
+ 
 
 </body>
 </html>
