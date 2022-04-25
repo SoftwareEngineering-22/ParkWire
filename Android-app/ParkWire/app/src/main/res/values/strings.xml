@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ParkWire</string>
+    <string name="hyperlink">Don't have an account? <a href="/activity_register.xml">Sign In</a></string>
+</resources>
