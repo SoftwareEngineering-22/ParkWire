@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
-    android:background="#212121">
+    android:background="#212121"
+    tools:context=".LoginActivity">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -22,27 +22,28 @@
         android:layout_width="212dp"
         android:layout_height="49dp"
         android:layout_marginTop="32dp"
+        android:backgroundTint="@color/colorPrimary"
         android:ems="10"
         android:hint="Username"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        android:backgroundTint="@color/colorPrimary"/>
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
     <EditText
         android:id="@+id/editTextTextPassword"
         android:layout_width="212dp"
         android:layout_height="49dp"
         android:layout_marginTop="20dp"
+        android:autofillHints="password"
+        android:backgroundTint="@color/colorPrimary"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
-        android:backgroundTint="@color/colorPrimary"/>
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
 
     <Button
         android:id="@+id/button"
@@ -51,12 +52,12 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
+        android:background="@drawable/button_rounded"
         android:text="Log In"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
-        android:background="@drawable/button_rounded" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
 
     <TextView
         android:id="@+id/textView"
@@ -74,25 +75,25 @@
         android:layout_height="50dp"
         android:layout_marginTop="42dp"
         android:layout_marginEnd="8dp"
+        android:background="@drawable/button_social"
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toStartOf="@+id/imageButton2"
         app:layout_constraintHorizontal_bias="0.833"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView"
-        app:srcCompat="@drawable/facebook"
-        android:background="@drawable/button_social" />
+        app:srcCompat="@drawable/facebook" />
 
     <ImageButton
         android:id="@+id/imageButton2"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="42dp"
+        android:background="@drawable/button_social"
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView"
-        app:srcCompat="@drawable/google"
-        android:background="@drawable/button_social" />
+        app:srcCompat="@drawable/google" />
 
     <ImageButton
         android:id="@+id/imageButton3"
@@ -100,13 +101,26 @@
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="42dp"
+        android:background="@drawable/button_social"
         android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.17"
         app:layout_constraintStart_toEndOf="@+id/imageButton2"
         app:layout_constraintTop_toTopOf="@+id/textView"
-        app:srcCompat="@drawable/twitter"
-        android:background="@drawable/button_social" />
+        app:srcCompat="@drawable/twitter" />
+
+    <TextView
+        android:id="@+id/logo_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="ParkWire"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.32999998" />
 
 
 </android.support.constraint.ConstraintLayout>

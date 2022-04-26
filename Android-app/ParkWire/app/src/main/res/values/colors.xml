@@ -8,4 +8,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="colorPrimary">#7A1E1D</color>
+    <color name="facebookBlue">#4267B2</color>
 </resources>
