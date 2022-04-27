@@ -22,7 +22,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="220dp"
         android:layout_marginEnd="32dp"
         android:backgroundTint="@color/colorPrimary"
         android:ems="10"
@@ -30,8 +29,9 @@
         android:inputType="textPersonName"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="313dp" />
+        tools:layout_editor_absoluteY="337dp" />
 
     <EditText
         android:id="@+id/editTextTextPassword"
@@ -77,18 +77,47 @@
 
     <TextView
         android:id="@+id/logo_text"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:layout_marginBottom="32dp"
+        android:paddingLeft="110dp"
         android:text="ParkWire"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="1.0" />
 
+    <Button
+        android:id="@+id/google_acc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="224dp"
+        android:backgroundTint="@color/social_back_color"
+        android:drawableStart="@drawable/ic_google"
+        android:paddingLeft="25dp"
+        android:text="Google"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_acc_btn" />
+
+    <Button
+        android:id="@+id/meta_acc"
+        android:layout_width="127dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="21dp"
+        android:backgroundTint="@color/social_back_color"
+        android:drawableStart="@drawable/ic_meta"
+        android:paddingLeft="25dp"
+        android:text="meta"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/google_acc"
+        app:layout_constraintTop_toBottomOf="@+id/create_acc_btn" />
 
 </android.support.constraint.ConstraintLayout>
 
