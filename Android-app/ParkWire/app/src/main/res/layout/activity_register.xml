@@ -154,7 +154,7 @@
         android:layout_marginStart="80dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="80dp"
-        android:text="Already have an account?"
+        android:text="@string/hyperlink2"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
