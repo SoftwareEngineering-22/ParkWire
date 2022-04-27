@@ -10,4 +10,6 @@
     <color name="colorPrimary">#7A1E1D</color>
     <color name="facebookBlue">#4267B2</color>
     <color name="social_back_color">#ADADAD</color>
+    <color name="mainBackColor">#e3dede</color>
+
 </resources>

@@ -2,4 +2,14 @@
     <string name="app_name">ParkWire</string>
     <string name="hyperlink1">Don\'t have an account? <a href="/activity_register.xml">Sign In</a></string>
     <string name="hyperlink2"><a href="/activity_login.xml">Already have an account? </a></string>
+    
+    // dropdown menu
+    <string-array name="ranges_spinner">
+        <item>100m</item>
+        <item>200m</item>
+        <item>300m</item>
+        <item>500m</item>
+        <item>700m</item>
+        <item>1km</item>
+    </string-array>
 </resources>
