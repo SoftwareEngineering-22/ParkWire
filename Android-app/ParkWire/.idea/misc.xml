@@ -3,9 +3,29 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Public/Documents/ParkWire/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2595" />
+        <entry key="..\:/Users/Public/Documents/ParkWire/app/src/main/res/drawable/button_border.xml" value="0.2595" />
         <entry key="..\:/Users/Public/Documents/ParkWire/app/src/main/res/drawable/button_rounded.xml" value="0.2595" />
         <entry key="..\:/Users/Public/Documents/ParkWire/app/src/main/res/drawable/button_social.xml" value="0.2595" />
-        <entry key="..\:/Users/Public/Documents/ParkWire/app/src/main/res/layout/activity_login.xml" value="0.264" />
+        <entry key="..\:/Users/Public/Documents/ParkWire/app/src/main/res/drawable/ic_add_item.xml" value="0.2595" />
+        <entry key="..\:/Users/Public/Documents/ParkWire/app/src/main/res/drawable/ic_add_new.xml" value="0.2595" />
+        <entry key="..\:/Users/Public/Documents/ParkWire/app/src/main/res/drawable/ic_email.xml" value="0.2595" />
+        <entry key="..\:/Users/Public/Documents/ParkWire/app/src/main/res/drawable/ic_gear.xml" value="0.2595" />
+        <entry key="..\:/Users/Public/Documents/ParkWire/app/src/main/res/drawable/ic_google.xml" value="0.2595" />
+        <entry key="..\:/Users/Public/Documents/ParkWire/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2595" />
+        <entry key="..\:/Users/Public/Documents/ParkWire/app/src/main/res/drawable/ic_map_marker.xml" value="0.2595" />
+        <entry key="..\:/Users/Public/Documents/ParkWire/app/src/main/res/drawable/ic_meta.xml" value="0.2595" />
+        <entry key="..\:/Users/Public/Documents/ParkWire/app/src/main/res/drawable/ic_pass_eye.xml" value="0.2595" />
+        <entry key="..\:/Users/Public/Documents/ParkWire/app/src/main/res/drawable/ic_person.xml" value="0.2595" />
+        <entry key="..\:/Users/Public/Documents/ParkWire/app/src/main/res/drawable/ic_search.xml" value="0.2595" />
+        <entry key="..\:/Users/Public/Documents/ParkWire/app/src/main/res/drawable/ic_security.xml" value="0.2595" />
+        <entry key="..\:/Users/Public/Documents/ParkWire/app/src/main/res/drawable/ic_user.xml" value="0.2595" />
+        <entry key="..\:/Users/Public/Documents/ParkWire/app/src/main/res/drawable/rounded_50.xml" value="0.2595" />
+        <entry key="..\:/Users/Public/Documents/ParkWire/app/src/main/res/layout/activity_filters.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Public/Documents/ParkWire/app/src/main/res/layout/activity_home.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Public/Documents/ParkWire/app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="..\:/Users/Public/Documents/ParkWire/app/src/main/res/layout/activity_register.xml" value="0.4" />
+        <entry key="..\:/Users/Public/Documents/ParkWire/app/src/main/res/layout/activity_settings.xml" value="0.264" />
         <entry key="..\:/Users/giwrg/Desktop/ParkWire/Android-app/ParkWire/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.229" />
         <entry key="..\:/Users/giwrg/Desktop/ParkWire/Android-app/ParkWire/app/src/main/res/drawable/button_border.xml" value="0.1745" />
         <entry key="..\:/Users/giwrg/Desktop/ParkWire/Android-app/ParkWire/app/src/main/res/drawable/button_rounded.xml" value="0.172" />
