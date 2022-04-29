@@ -25,7 +25,7 @@
             android:name=".HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".FiltersActivity"
+            android:name=".SettingsActivity"
             android:exported="false" />
     </application>
 

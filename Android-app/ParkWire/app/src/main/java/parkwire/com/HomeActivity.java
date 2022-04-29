@@ -16,11 +16,11 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        // profile activity forward
+        // settings activity forward
         settingsBtn = findViewById(R.id.settings_btn);
         settingsBtn.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
-                //startActivity(new Intent(HomeActivity.class, Profile.class));
+                startActivity(new Intent(HomeActivity.this, SettingsActivity.class));
             }
         });
     }
