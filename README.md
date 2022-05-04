@@ -27,3 +27,8 @@
 Επειδή ξεκινήσαμε το Project σαν Web-Based Application την αρχική υλοποίηση του GUI την κάναμε με html και css όπως και την 1η κλάση μας, στην επομένη έκδοση αυτά θα αλλάξουν σε Java αφού θα χρησιμοποίησουμε το Android Studio, όμως επειδή είναι κάτι καινούργιο για εμάς χρειαζόμαστε λίγο χρόνο να το μάθουμε.
 
 ## Implemented Screens so far
+![alt text](https://github.com/SoftwareEngineering-22/ParkWire/blob/main/Images-logos/Implemented%20Screens/login.png)
+![alt text](https://github.com/SoftwareEngineering-22/ParkWire/blob/main/Images-logos/Implemented%20Screens/signup.png)
+![alt text](https://github.com/SoftwareEngineering-22/ParkWire/blob/main/Images-logos/Implemented%20Screens/home.png)
+![alt text](https://github.com/SoftwareEngineering-22/ParkWire/blob/main/Images-logos/Implemented%20Screens/settings.png)
+![alt text](https://github.com/SoftwareEngineering-22/ParkWire/blob/main/Images-logos/Implemented%20Screens/filters.png)
