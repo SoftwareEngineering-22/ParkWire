@@ -64,7 +64,6 @@
         android:background="@drawable/button_rounded"
         android:text="Log In"
         android:textSize="24sp"
-        android:onClick="loginButton"
         app:layout_constraintEnd_toEndOf="@+id/editTextTextPassword"
         app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="@+id/editTextTextPassword"
