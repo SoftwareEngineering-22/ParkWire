@@ -30,6 +30,9 @@
         <activity
             android:name=".SettingsActivity"
             android:exported="false" />
+        <activity
+            android:name=".ParkedItActivity"
+            android:exported="false"/>
     </application>
 
 </manifest>
