@@ -17,12 +17,12 @@ import java.net.URLEncoder;
 import java.net.MalformedURLException;
 import java.nio.charset.CharsetEncoder;
 
-public class Background extends  AsyncTask<String ,Void ,String> {
+public class background extends  AsyncTask<String ,Void ,String> {
 
     AlertDialog dialog;
     Context context;
 
-    public Background(Context context){
+    public background(Context context){
         this.context=context;
     }
 
