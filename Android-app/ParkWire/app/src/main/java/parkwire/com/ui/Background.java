@@ -1,4 +1,4 @@
-package parkwire.com;
+package parkwire.com.ui;
 
 import android.app.AlertDialog;
 import android.content.Context;

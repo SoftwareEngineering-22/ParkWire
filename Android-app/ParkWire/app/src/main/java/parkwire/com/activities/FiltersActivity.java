@@ -1,4 +1,4 @@
-package parkwire.com;
+package parkwire.com.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +7,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import parkwire.com.R;
 
 public class FiltersActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 

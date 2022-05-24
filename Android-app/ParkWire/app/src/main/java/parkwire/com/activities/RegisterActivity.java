@@ -1,10 +1,12 @@
-package parkwire.com;
+package parkwire.com.activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 import android.view.View;
+
+import parkwire.com.R;
 
 public class RegisterActivity extends AppCompatActivity {
 
