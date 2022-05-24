@@ -1,7 +1,7 @@
 package parkwire.com.activities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -12,6 +12,7 @@ public class HomeActivity extends AppCompatActivity {
 
     // variables
     private TextView settingsBtn;
+    private TextView parkingNearMeBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,5 +26,13 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(new Intent(HomeActivity.this, SettingsActivity.class));
             }
         });
+
+        parkingNearMeBtn = findViewById(R.id.near_me_btn);
+        parkingNearMeBtn.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, ParkingNearMeActivity.class));
+            }
+        });
+
     }
 }
