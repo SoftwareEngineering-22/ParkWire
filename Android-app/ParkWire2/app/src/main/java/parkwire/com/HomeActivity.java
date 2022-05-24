@@ -10,7 +10,6 @@ public class HomeActivity extends AppCompatActivity {
 
     // variables
     private TextView settingsBtn;
-    private TextView parkingNearMeBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,13 +23,5 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(new Intent(HomeActivity.this, SettingsActivity.class));
             }
         });
-
-        parkingNearMeBtn = findViewById(R.id.near_me_btn);
-        parkingNearMeBtn.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, ParkingNearMeActivity.class));
-            }
-        });
-
     }
 }

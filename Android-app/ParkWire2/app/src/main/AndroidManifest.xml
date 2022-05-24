@@ -3,8 +3,6 @@
     package="parkwire.com">
     
     <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
 
     <application
@@ -40,9 +38,8 @@
             android:name=".SettingsActivity"
             android:exported="false" />
         <activity
-            android:name=".ParkingNearMeActivity"
-            android:exported="false"/>
-
+            android:name=".MapsActivity"
+            android:exported="false" />
     </application>
 
 
