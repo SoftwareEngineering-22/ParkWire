@@ -52,4 +52,12 @@ public class User{
         }
     }
 
+    public void viewHistory(){
+        System.out.println("There's no history yet!");
+    }
+
+    public void uploadDB(){
+        System.out.println("Nothing to upload yet!");
+    }
+
 }
