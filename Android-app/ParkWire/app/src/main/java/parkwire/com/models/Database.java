@@ -1,4 +1,6 @@
 package parkwire.com.models;
+import android.os.StrictMode;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -21,15 +23,15 @@ public class Database{
     // constructor to create total diff db con
     public Database(){
         try {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
             Class.forName("org.postgresql.Driver");
-            this.connection =
-                    DriverManager.getConnection(String.format(this.url, this.host, this.port, this.database), this.username, this.password);
+            this.connection = DriverManager.getConnection(String.format(this.url, this.host, this.port, this.database), this.username, this.password);
             System.out.println("Succesfull Connection..");
         }
         catch(Exception e) {
             System.out.println("Unsuccesful connection with db.");
             System.out.println("Error: "+ e);
-            e.printStackTrace();
         }
     }
     //method which establishes connection with  DB

@@ -27,11 +27,9 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.INTERNET}, PackageManager.PERMISSION_GRANTED);
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
 
-        Database mydb = new Database();
-        mydb.printQuery("SELECT * FROM USERS;");
+        //Database mydb = new Database();
+        //mydb.printQuery("SELECT * FROM USERS;");
 
         // settings activity forward
         settingsBtn = findViewById(R.id.settings_btn);
