@@ -58,9 +58,7 @@ public class LoginActivity extends AppCompatActivity{
             pst.setString(1, username);
             pst.setString(2, password);
             ResultSet rs = pst.executeQuery();
-            while(rs.next()){
-                if (rs.getInt("cnt") == 1) return true;
-            }
+            if(rs.next()) return rs.getInt("cnt") == 1;
 
         } catch (SQLException e) {
             e.printStackTrace();

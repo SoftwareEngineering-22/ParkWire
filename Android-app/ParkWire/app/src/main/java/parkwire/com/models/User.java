@@ -14,6 +14,10 @@ public class User{
         this.password = pass;
     }
 
+    public String getUsername(){
+        return this.username;
+    }
+
     public static boolean validateUsername(final String username) {
         String regex = "^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]$";
         Pattern pattern = Pattern.compile(regex);
