@@ -18,15 +18,22 @@ public class Driver extends User {
         this.points = pts;
     }
 
-    public void reward(){
-        this.points =+ 5;
-    }
-
     public Request writeMessage(float parkLat, float parkLon){
         System.out.println("Write your message.");
         Scanner msgScanner = new Scanner(System.in);
         String mess = msgScanner.nextLine();
-        return new Request(mess, parkLat, parkLon);
+        Request req = new Request(mess, parkLat, parkLon);
+        return req;
+    }
+
+    public void reward(Request req){
+        if(this.getUsername() == req.getSender().getUsername()) {
+            this.points =+2;
+        }
+        else if(this.getUsername() == req.getRecipient().getUsername()){
+            this.points =+5;
+        }
+        //if the sender has parked in the requested spot and submitted an estimate, they get 3 more points.
     }
 
     public void sendAccept(){
