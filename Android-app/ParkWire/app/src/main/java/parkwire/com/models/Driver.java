@@ -1,5 +1,9 @@
 package parkwire.com.models;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Driver extends User {
@@ -34,6 +38,27 @@ public class Driver extends User {
     }
 
     public void returnMap(){
+
+    }
+
+    public void viewHistory(){
+        String history_q = "select * from history as h" +
+                "inner join drivers as dr on dr.user_id = h.user_id" +
+                "inner join user as u on u.user_id = dr.user_id" +
+                "where u.username = ?";
+
+        Connection con = new Database().connect();
+        try{
+            PreparedStatement ps = con.prepareStatement(history_q);
+            ps.setString(1, super.getUsername());
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                System.out.println("Date: " + rs.getTimestamp("parked") + "Left: " + rs.getTimestamp("left_parking") + "Paid: " + rs.getFloat("payment ") + "\n");
+            }
+            ps.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 

@@ -57,7 +57,7 @@ public class User{
     }
 
     public void viewHistory(){
-        System.out.println("There's no history yet!");
+        System.out.println("Depending on the user, polymorphism is applied.");
     }
 
     public void uploadDB(){
