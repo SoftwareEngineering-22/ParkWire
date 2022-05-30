@@ -48,6 +48,18 @@ public class Driver extends User {
 
     }
 
+    public float getLatitude(){
+        return this.currLat;
+    }
+
+    public float getLongitude(){
+        return this.currLon;
+    }
+
+    public int getPoints(){
+        return this.points;
+    }
+
     public void viewHistory(){
         String history_q = "select * from history as h" +
                 "inner join drivers as dr on dr.user_id = h.user_id" +
