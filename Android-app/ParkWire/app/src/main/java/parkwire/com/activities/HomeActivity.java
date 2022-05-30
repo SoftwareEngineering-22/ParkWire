@@ -4,10 +4,8 @@ import android.Manifest;
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.view.View;
 import android.widget.TextView;
 
@@ -28,8 +26,8 @@ public class HomeActivity extends AppCompatActivity {
 
         ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.INTERNET}, PackageManager.PERMISSION_GRANTED);
 
-        //Database mydb = new Database();
-        //mydb.printQuery("SELECT * FROM USERS;");
+        Database mydb = new Database();
+        mydb.printQuery("SELECT * FROM USERS;");
 
         // settings activity forward
         settingsBtn = findViewById(R.id.settings_btn);
