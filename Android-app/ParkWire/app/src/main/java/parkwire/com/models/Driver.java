@@ -18,6 +18,18 @@ public class Driver extends User {
         this.points = pts;
     }
 
+    public float getLatitude(){
+        return this.currLat;
+    }
+
+    public float getLongitude(){
+        return this.currLon;
+    }
+
+    public int getPoints(){
+        return this.points;
+    }
+
     public Request writeMessage(float parkLat, float parkLon){
         System.out.println("Write your message.");
         Scanner msgScanner = new Scanner(System.in);
@@ -27,13 +39,15 @@ public class Driver extends User {
     }
 
     public void reward(Request req){
-        if(this.getUsername() == req.getSender().getUsername()) {
+        if(super.getUsername() == req.getSender().getUsername()) {
             this.points =+2;
         }
-        else if(this.getUsername() == req.getRecipient().getUsername()){
+        else if(super.getUsername() == req.getRecipient().getUsername()){
             this.points =+5;
         }
-        //if the sender has parked in the requested spot and submitted an estimate, they get 3 more points.
+        if((currLat == req.getReqLat()) && (currLon == req.getReqLon())){
+            this.points =+3;
+        }
     }
 
     public void sendAccept(){
@@ -46,18 +60,6 @@ public class Driver extends User {
 
     public void returnMap(){
 
-    }
-
-    public float getLatitude(){
-        return this.currLat;
-    }
-
-    public float getLongitude(){
-        return this.currLon;
-    }
-
-    public int getPoints(){
-        return this.points;
     }
 
     public void viewHistory(){

@@ -22,6 +22,14 @@ public class Request {
         return recipient;
     }
 
+    public float getReqLat() {
+        return reqLat;
+    }
+
+    public float getReqLon() {
+        return reqLon;
+    }
+
     public void sentMessage(){
 
     }
