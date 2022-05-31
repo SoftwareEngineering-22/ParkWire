@@ -1,5 +1,6 @@
 package parkwire.com.models;
 
+
 public class Paid extends Parking{
     private int capacity;
     private float cost;
@@ -9,4 +10,11 @@ public class Paid extends Parking{
         this.cost = cost;
     }
 
+    public void setCost(){
+        this.cost = cost;
+    }
+
+    public float getCost(){
+        return cost;
+    }
 }

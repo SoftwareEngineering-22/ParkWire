@@ -8,6 +8,8 @@ import java.util.Scanner;
 
 public class Seeking extends Driver{
 
+    private Timestamp paidEstimate;
+
     public Seeking(String email, String username, String pass, float lat, float lon, int pts){
         super(email, username, pass, lat, lon, pts);
     }
@@ -36,17 +38,24 @@ public class Seeking extends Driver{
         }
     }
 
-    public int setPaidTime(){
-        int paidEstimate = 0;
+    public void setPaidTime(){
         System.out.println("Insert your estimate.");
         Scanner est = new Scanner(System.in);
         String estStr = est.next();
         try {
-            paidEstimate = Integer.parseInt(estStr);
+            paidEstimate = Timestamp.valueOf(estStr);
         }
         catch(NumberFormatException ex) {
             ex.printStackTrace();
         }
-        return paidEstimate;
+    }
+
+    public Timestamp getPaidTime(){
+        return this.paidEstimate;
+    }
+
+    public float calculateCost(Paid pp){
+        float c = getPaidTime().getTime() * pp.getCost();
+        return c;
     }
 }
