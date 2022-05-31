@@ -17,6 +17,8 @@ public class User{
     public String getUsername(){
         return this.username;
     }
+    public String getEmail(){return this.email;}
+    public String getPassword(){return this.password;}
 
     public static boolean validateUsername(final String username) {
         String regex = "^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]$";

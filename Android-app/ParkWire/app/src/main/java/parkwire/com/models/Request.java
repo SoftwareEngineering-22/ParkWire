@@ -7,6 +7,7 @@ public class Request {
     private Driver sender;
     private Driver recipient;
 
+
     public Request(String msg, float rlat, float rlon){
         this.message = msg;
         this.reqLat = rlat;
@@ -19,6 +20,14 @@ public class Request {
 
     public Driver getRecipient() {
         return recipient;
+    }
+
+    public float getReqLat() {
+        return reqLat;
+    }
+
+    public float getReqLon() {
+        return reqLon;
     }
 
     public void sentMessage(){
