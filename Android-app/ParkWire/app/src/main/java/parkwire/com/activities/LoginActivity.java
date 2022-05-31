@@ -32,7 +32,7 @@ public class LoginActivity extends AppCompatActivity{
              public void onClick(View v) {
                  String username = usr.getText().toString();
                  String password = pass.getText().toString();
-                 if(userExists(username, password))
+                 if(!userExists(username, password))
                     startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                  else
                      System.out.println("Get outta here");

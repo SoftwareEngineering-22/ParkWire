@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -44,33 +45,78 @@ public class User{
         return matcher.matches();
     }
 
+    // this method simulates ui form
+    public String showUsernameForm(){
+        Scanner myObj = new Scanner(System.in);
+        System.out.println("Current Username: " + this.username);
+        System.out.println("Enter new  username:");
+
+        String username = myObj.nextLine();
+        System.out.println("Username is: " + username);
+
+        return username;
+    }
+
+    // this method simulates ui form
+    public String showPasswordForm(){
+        Scanner myObj = new Scanner(System.in);
+        System.out.println("Current Password: " + this.password);
+        System.out.println("Enter new password:");
+
+        String password = myObj.nextLine();
+        System.out.println("Password is: " + password);
+
+        return password;
+    }
+
+    public void uploadUsername(String newUsername){
+        Connection con = new Database().connect();
+        // check if already  exists
+        try {
+            boolean exists = true;
+            PreparedStatement pstm = con.prepareStatement("SELECT username from users where username = ?");
+            pstm.setString(1, newUsername);
+            ResultSet rs = pstm.executeQuery();
+            if (rs.next()){
+                if(!rs.getString("username").equals(newUsername)) exists = false;
+            }
+
+            if (!exists){
+                pstm = con.prepareStatement("update users set username = ? where email = ?");
+                pstm.setString(1, newUsername);
+                pstm.setString(2, this.getEmail());
+                if(pstm.executeUpdate() != 0 ){
+                    System.out.println("Username updated successfully");
+                    this.username = newUsername;
+                }else
+                    System.out.println("Something went wrong");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void uploadPassword(String newPassword){
+        Connection con = new Database().connect();
+        try {
+            PreparedStatement pstm = con.prepareStatement("UPDATE users SET password = ? WHERE username = ?");
+            pstm.setString(1, newPassword);
+            pstm.setString(2, this.getUsername());
+            if (pstm.executeUpdate() != 0){
+                System.out.println("Password Updated sucessfully");
+                this.password = newPassword;
+            }
+            else
+                System.out.println("Something went wrong");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
     public void changeUsername(String newUsername){
         if (validateEmail(newUsername)) {
-            Connection con = new Database().connect();
-            // check if already  exists
-            try {
-                boolean exists = true;
-                PreparedStatement pstm = con.prepareStatement("SELECT username from users where username = ?");
-                pstm.setString(1, newUsername);
-                ResultSet rs = pstm.executeQuery();
-                if (rs.next()){
-                    if(!rs.getString("username").equals(newUsername)) exists = false;
-                }
-
-                if (!exists){
-                    pstm = con.prepareStatement("update users set username = ? where email = ?");
-                    pstm.setString(1, newUsername);
-                    pstm.setString(2, this.getEmail());
-                    if(pstm.executeUpdate() != 0 ){
-                        System.out.println("Username updated successfully");
-                        this.username = newUsername;
-                    }else
-                        System.out.println("Something went wrong");
-                }
-
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            this.uploadUsername(newUsername);
         }else {
             System.out.println("Invalid Username");
         }
@@ -78,30 +124,13 @@ public class User{
 
     public void changePassword(String newPass){
         if (validateEmail(newPass)) {
-            Connection con = new Database().connect();
-            try {
-                PreparedStatement pstm = con.prepareStatement("UPDATE users SET password = ? WHERE username = ?");
-                pstm.setString(1, newPass);
-                pstm.setString(2, this.getUsername());
-                if (pstm.executeUpdate() != 0){
-                    System.out.println("Password Updated sucessfully");
-                    this.password = newPass;
-                }
-                else
-                    System.out.println("Something went wrong");
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
+            this.uploadPassword(newPass);
         }else
             System.out.println("Invalid Password");
     }
 
     public void viewHistory(){
-        System.out.println("Depending on the user, polymorphism is applied.");
-    }
-
-    public void uploadDB(){
-        System.out.println("Nothing to upload yet!");
+        // check Polymorphsim on viewHistory
     }
 
 }
