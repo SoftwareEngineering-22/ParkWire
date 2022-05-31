@@ -1,6 +1,5 @@
 CREATE TABLE users (
-	user_id serial PRIMARY KEY,
-	username VARCHAR ( 50 ) UNIQUE NOT NULL,
+	username VARCHAR ( 50 ) PRIMARY KEY,
 	password VARCHAR ( 50 ) NOT NULL,
 	email VARCHAR ( 255 ) UNIQUE NOT NULL,
 	isDriver BOOLEAN NOT NULL,
@@ -9,20 +8,20 @@ CREATE TABLE users (
 );
 
 CREATE TABLE drivers (
-    user_id INT PRIMARY KEY NOT NULL,
+    username VARCHAR ( 50 ) PRIMARY KEY,
     points BIGINT,
-    FOREIGN KEY (user_id)
-      REFERENCES users (user_id)
+    FOREIGN KEY (username)
+      REFERENCES users (username)
 );
 
 CREATE TABLE parked_driver (
-    user_id INT PRIMARY KEY NOT NULL,
+    username VARCHAR ( 50 ) PRIMARY KEY,
     parkingLocLatitude FLOAT DEFAULT NULL,
     parkingLocLongitude FLOAT DEFAULT NULL,
     parkedTimestamp TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     timeEstimate TIMESTAMP WITH TIME ZONE,
-    FOREIGN KEY (user_id)
-      REFERENCES users (user_id),
+    FOREIGN KEY (username)
+      REFERENCES drivers (username),
       FOREIGN KEY (parkingLocLatitude)
       REFERENCES parking (parkingLocLatitude)
       ON DELETE SET NULL,
@@ -32,11 +31,11 @@ CREATE TABLE parked_driver (
 );
 
 CREATE TABLE valet (
-    user_id INT PRIMARY KEY NOT NULL,
+    username VARCHAR ( 50 ) PRIMARY KEY,
     businessName VARCHAR ( 255 ) NOT NULL,
     info TEXT,
-    FOREIGN KEY (user_id)
-      REFERENCES users (user_id)
+    FOREIGN KEY (username)
+      REFERENCES users (username)
 );
 
 CREATE TABLE parking(
@@ -48,25 +47,24 @@ CREATE TABLE parking(
 );
 
 CREATE TABLE paid_parking(
-    id serial PRIMARY KEY,
+    id serial UNIQUE,
+    username VARCHAR ( 50 ) PRIMARY KEY,
     parkingLocLatitude FLOAT UNIQUE NOT NULL,
     parkingLocLongitude FLOAT UNIQUE NOT NULL,
     capacity INT,
     cost FLOAT,
-    user_id INT NOT NULL,
-    FOREIGN KEY (user_id)
-      REFERENCES valet (user_id)
+    FOREIGN KEY (username)
+      REFERENCES valet (username)
 );
 
 CREATE TABLE history(
-    id serial PRIMARY KEY,
-    user_id INT NOT NULL,
+    username VARCHAR ( 50 ) PRIMARY KEY,
     parking_id INT NOT NULL,
     payment FLOAT NOT NULL,
     parked TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     left_parking TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-     FOREIGN KEY (user_id)
-      REFERENCES drivers (user_id),
+     FOREIGN KEY (username)
+      REFERENCES drivers (username),
     FOREIGN KEY (parking_id)
       REFERENCES paid_parking (id)
 );
