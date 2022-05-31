@@ -2,13 +2,13 @@ package parkwire.com.models;
 
 public class Request {
     private String message;
-    private float reqLat;
-    private float reqLon;
+    private double reqLat;
+    private double reqLon;
     private Driver sender;
     private Driver recipient;
 
 
-    public Request(String msg, float rlat, float rlon){
+    public Request(String msg, double rlat, double rlon){
         this.message = msg;
         this.reqLat = rlat;
         this.reqLon = rlon;
@@ -22,11 +22,11 @@ public class Request {
         return recipient;
     }
 
-    public float getReqLat() {
+    public double getReqLat() {
         return reqLat;
     }
 
-    public float getReqLon() {
+    public double getReqLon() {
         return reqLon;
     }
 

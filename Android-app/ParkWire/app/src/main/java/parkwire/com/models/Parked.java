@@ -10,8 +10,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class Parked extends Driver {
-    private float parkingLocLatitude;
-    private float parkingLocLongitude;
+    private double parkingLocLatitude;
+    private double parkingLocLongitude;
     private Timestamp timestamp;
     private Timestamp timeEstimate;
 
@@ -20,7 +20,7 @@ public class Parked extends Driver {
 
     // για print timestamp System.out.println(dateFormat.format(timestamp));
 
-    public Parked(String email, String username, String pass, float lat, float lon, int pts, Timestamp timeEstimate) {
+    public Parked(String email, String username, String pass, double lat, double lon, int pts, Timestamp timeEstimate) {
         super(email, username, pass, lat, lon, pts);
         this.parkingLocLatitude = lat;
         this.parkingLocLongitude = lon;
@@ -31,8 +31,8 @@ public class Parked extends Driver {
         try {
             PreparedStatement pstm = con.prepareStatement("INSERT INTO parked_driver VALUES (?, ?, ?, ?, ?)");
             pstm.setString(1, username);
-            pstm.setFloat(2, this.parkingLocLatitude);
-            pstm.setFloat(3, this.parkingLocLongitude);
+            pstm.setDouble(2, this.parkingLocLatitude);
+            pstm.setDouble(3, this.parkingLocLongitude);
             pstm.setTimestamp(4, this.timestamp);
             pstm.setTimestamp(5, this.timeEstimate);
             if (pstm.executeUpdate() != 0) {
@@ -45,11 +45,11 @@ public class Parked extends Driver {
         }
     }
 
-    public float getParkingLocLatitude() {
+    public double getParkingLocLatitude() {
         return this.parkingLocLatitude;
     }
 
-    public float getParkingLocLongitude() {
+    public double getParkingLocLongitude() {
         return this.parkingLocLongitude;
     }
 

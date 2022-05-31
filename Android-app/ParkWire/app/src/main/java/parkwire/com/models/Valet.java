@@ -84,14 +84,14 @@ class Valet extends User {
 
     }
 
-    public void addNewBusiness(float lat, float lon, int capacity, int cost, String contact_info, String work_hours, String address) {
+    public void addNewBusiness(double lat, double lon, int capacity, int cost, String contact_info, String work_hours, String address) {
         Database db = new Database();
         Connection con = db.connect();
         try {
             PreparedStatement pstm = con.prepareStatement("INSERT INTO paid_parking VALUES(DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?");
             pstm.setString(1, getUsername());
-            pstm.setFloat(2, lat);
-            pstm.setFloat(3, lon);
+            pstm.setDouble(2, lat);
+            pstm.setDouble(3, lon);
             pstm.setInt(4, capacity);
             pstm.setInt(5, cost);
             pstm.setString(6, contact_info);
@@ -108,15 +108,15 @@ class Valet extends User {
 
     }
 
-    public void editBusiness(float lat, float lon, int capacity, int cost, String contact_info, String work_hours, String address) {
+    public void editBusiness(double lat, double lon, int capacity, int cost, String contact_info, String work_hours, String address) {
         Database db = new Database();
         Connection con = db.connect();
 
         if (lat != 0 || lon != 0) {
             try {
                 PreparedStatement pstm = con.prepareStatement("UPDATE parked_driver SET parkingloclatitude = ?, parkingloclongitude = ? WHERE username = ?");
-                pstm.setFloat(1, lat);
-                pstm.setFloat(2, lon);
+                pstm.setDouble(1, lat);
+                pstm.setDouble(2, lon);
                 pstm.setString(3, this.getUsername());
                 if (pstm.executeUpdate() != 0) {
                     System.out.println("Paid Parking Location updated");

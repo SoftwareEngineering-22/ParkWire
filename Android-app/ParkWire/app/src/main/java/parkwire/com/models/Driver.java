@@ -7,22 +7,22 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Driver extends User {
-    float currLat;
-    float currLon;
+    double currLat;
+    double currLon;
     int points;
 
-    public Driver(String email, String username, String pass, float lat, float lon, int pts){
+    public Driver(String email, String username, String pass, double lat, double lon, int pts){
         super(email, username, pass);
         this.currLat = lat;
         this.currLon = lon;
         this.points = pts;
     }
 
-    public float getLatitude(){
+    public double getLatitude(){
         return this.currLat;
     }
 
-    public float getLongitude(){
+    public double getLongitude(){
         return this.currLon;
     }
 
@@ -30,7 +30,7 @@ public class Driver extends User {
         return this.points;
     }
 
-    public Request writeMessage(float parkLat, float parkLon){
+    public Request writeMessage(double parkLat, double parkLon){
         System.out.println("Write your message.");
         Scanner msgScanner = new Scanner(System.in);
         String mess = msgScanner.nextLine();

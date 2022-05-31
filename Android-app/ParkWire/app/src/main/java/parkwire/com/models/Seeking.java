@@ -11,7 +11,7 @@ public class Seeking extends Driver{
 
     private Timestamp paidEstimate;
 
-    public Seeking(String email, String username, String pass, float lat, float lon, int pts){
+    public Seeking(String email, String username, String pass, double lat, double lon, int pts){
         super(email, username, pass, lat, lon, pts);
     }
 
