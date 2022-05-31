@@ -4,7 +4,7 @@ CREATE TABLE users (
 	email VARCHAR ( 255 ) UNIQUE NOT NULL,
 	isDriver BOOLEAN NOT NULL,
 	isValet BOOLEAN NOT NULL,
-	created_on TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+	created_on TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE drivers (
@@ -18,8 +18,8 @@ CREATE TABLE parked_driver (
     username VARCHAR ( 50 ) PRIMARY KEY,
     parkingLocLatitude FLOAT DEFAULT NULL,
     parkingLocLongitude FLOAT DEFAULT NULL,
-    parkedTimestamp TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-    timeEstimate TIMESTAMP WITH TIME ZONE,
+    parkedTimestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    timeEstimate TIMESTAMP,
     FOREIGN KEY (username)
       REFERENCES drivers (username),
       FOREIGN KEY (parkingLocLatitude)
@@ -47,12 +47,15 @@ CREATE TABLE parking(
 );
 
 CREATE TABLE paid_parking(
-    id serial UNIQUE,
-    username VARCHAR ( 50 ) PRIMARY KEY,
+    id serial PRIMARY KEY,
+    username VARCHAR ( 50 ),
     parkingLocLatitude FLOAT UNIQUE NOT NULL,
     parkingLocLongitude FLOAT UNIQUE NOT NULL,
     capacity INT,
     cost FLOAT,
+    contact_information VARCHAR,
+    work_hours TEXT,
+    address VARCHAR,
     FOREIGN KEY (username)
       REFERENCES valet (username)
 );
@@ -61,8 +64,8 @@ CREATE TABLE history(
     username VARCHAR ( 50 ) PRIMARY KEY,
     parking_id INT NOT NULL,
     payment FLOAT NOT NULL,
-    parked TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-    left_parking TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    parked TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    left_parking TIMESTAMP CURRENT_TIMESTAMP,
      FOREIGN KEY (username)
       REFERENCES drivers (username),
     FOREIGN KEY (parking_id)
