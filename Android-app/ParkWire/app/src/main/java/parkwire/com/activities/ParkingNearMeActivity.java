@@ -13,6 +13,7 @@
 // limitations under the License.
 package parkwire.com.activities;
 
+import parkwire.com.R;
 import android.Manifest.permission;
 import android.annotation.SuppressLint;
 
