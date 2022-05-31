@@ -39,11 +39,11 @@ public class Seeking extends Driver{
     }
 
     public void setPaidTime(){
-        System.out.println("Insert your estimate.");
+        System.out.println("Insert your estimate to arrive:");
         Scanner est = new Scanner(System.in);
         String estStr = est.next();
         try {
-            paidEstimate = Timestamp.valueOf(estStr);
+            this.paidEstimate = Timestamp.valueOf(estStr);
         }
         catch(NumberFormatException ex) {
             ex.printStackTrace();

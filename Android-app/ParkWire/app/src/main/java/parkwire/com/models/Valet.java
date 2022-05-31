@@ -58,14 +58,10 @@ class Valet extends User {
         return 1;
     }
 
-    public void viewHistory() {
-        String history_q = "select * from paid_parking as pp" +
-                "inner join valet as v on v.username = pp.username" +
-                "inner join driver_history as dh on dh.parking_id = pp.id" +
-                "where h.username = ?";
+    public void searchValetHistory(String query){
         Connection con = new Database().connect();
         try {
-            PreparedStatement pstm = con.prepareStatement(history_q);
+            PreparedStatement pstm = con.prepareStatement(query);
             pstm.setString(1, super.getUsername());
             ResultSet rs_paid = pstm.executeQuery();
 
@@ -77,6 +73,14 @@ class Valet extends User {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+    public void viewHistory() {
+        String history_q = "select * from paid_parking as pp" +
+                "inner join valet as v on v.username = pp.username" +
+                "inner join driver_history as dh on dh.parking_id = pp.id" +
+                "where h.username = ?";
+
+        this.searchValetHistory(history_q);
 
     }
 

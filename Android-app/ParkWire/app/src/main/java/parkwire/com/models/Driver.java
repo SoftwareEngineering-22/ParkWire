@@ -62,17 +62,11 @@ public class Driver extends User {
 
     }
 
-    public void viewHistory(){
-        String paid_history_q = "select * from driver_history as dh" +
-                "inner join drivers as dr on dr.username = dh.username" +
-                "where h.username = ?";
-        String history_q = "select * from parked_driver as pd"+
-                            "inner join drivers as d on d.username = pd.username"+
-                            "where d.username = ?";
+    public void searchDriverHistory(String query1, String query2){
         Connection con = new Database().connect();
         try{
-            PreparedStatement ps_paid = con.prepareStatement(paid_history_q);
-            PreparedStatement ps_h = con.prepareStatement(history_q);
+            PreparedStatement ps_paid = con.prepareStatement(query1);
+            PreparedStatement ps_h = con.prepareStatement(query2);
             ps_paid.setString(1, super.getUsername());
             ps_h.setString(1, super.getUsername());
             ResultSet rs_paid = ps_paid.executeQuery();
@@ -93,7 +87,16 @@ public class Driver extends User {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
 
+    public void viewHistory(){
+        String paid_history_q = "select * from driver_history as dh" +
+                "inner join drivers as dr on dr.username = dh.username" +
+                "where h.username = ?";
+        String history_q = "select * from parked_driver as pd"+
+                            "inner join drivers as d on d.username = pd.username"+
+                            "where d.username = ?";
+        this.searchDriverHistory(paid_history_q, history_q);
     }
 
 }

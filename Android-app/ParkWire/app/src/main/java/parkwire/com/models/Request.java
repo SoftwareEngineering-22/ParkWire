@@ -30,16 +30,11 @@ public class Request {
         return reqLon;
     }
 
-    public void sentMessage(){
+    public void sentMessage(){}
 
-    }
+    public void sentNotification(){}
 
-    public void sentNotification(){
+    public void pushNotification(){}
 
-    }
-
-    public void pushNotification(){
-
-    }
 }
 
