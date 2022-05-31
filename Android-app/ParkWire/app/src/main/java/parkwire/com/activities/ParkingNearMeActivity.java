@@ -13,6 +13,7 @@
 // limitations under the License.
 package parkwire.com.activities;
 
+import parkwire.com.R;
 import android.Manifest.permission;
 import android.annotation.SuppressLint;
 
@@ -93,7 +94,7 @@ public class ParkingNearMeActivity extends AppCompatActivity
 
     private GoogleMap map;
 
-    private ImageButton settingsBtn1;
+    private ImageButton filterBtn1;
 
     // Seeking Driver
     //String email, String username, String pass, float lat, float lon, int pts
@@ -108,11 +109,15 @@ public class ParkingNearMeActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_parkingnearme);
+        setContentView(R.layout.activity_maps);
 
+<<<<<<< HEAD
         settingsBtn1 = findViewById(R.id.settingsButton);
         settingsBtn1.setOnClickListener(new View.OnClickListener(){
-            @Override
+=======
+        filterBtn1 = findViewById(R.id.imageButton);
+        filterBtn1.setOnClickListener(new View.OnClickListener(){
+>>>>>>> 66598999dac621f6f9c0d08a5bdcad0468bcdd2f
             public void onClick(View v) {
                 startActivity(new Intent(ParkingNearMeActivity.this, SettingsActivity.class));
             }

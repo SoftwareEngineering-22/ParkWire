@@ -15,6 +15,13 @@
         android:layout_marginStart="3dp"
         android:layout_marginTop="2dp" />
 
+    <fragment
+        android:id="@+id/autocomplete_fragment"
+        android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
+        android:layout_width="354dp"
+        android:layout_height="67dp"
+        android:visibility="visible" />
+
     <Button
         android:id="@+id/runBtn"
         android:layout_width="99dp"
@@ -30,24 +37,16 @@
         android:text="Run"
         android:textColor="#ffffff" />
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="99dp"
-        android:layout_height="54dp"
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="304dp"
-        android:layout_marginBottom="3dp"
-        app:srcCompat="@drawable/ic_search" />
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="95dp"
-        android:layout_height="58dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="7dp"
-        android:layout_marginBottom="1dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/ic_filter"
         app:srcCompat="@drawable/ic_filter" />
+
 
 </RelativeLayout>
