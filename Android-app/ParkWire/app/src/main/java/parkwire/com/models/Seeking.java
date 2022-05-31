@@ -13,34 +13,21 @@ public class Seeking extends Driver{
     }
 
     public void parkedIt(){
-        int timeEstimate = 0;
+
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        Scanner estScanner = new Scanner(System.in);
-        String estStr = estScanner.next();
+        Timestamp timeEstimate;
+        //Scanner estScanner = new Scanner(System.in);
+        String estStr = "2022-05-31 17:19:00.000";
+       // String estStr = estScanner.next();
         try {
-            timeEstimate = Integer.parseInt(estStr);
+            timeEstimate = Timestamp.valueOf(estStr);
+            new Parked(getEmail(), getUsername(), getPassword(), getLatitude(), getLongitude(), getPoints(), timeEstimate);
+            //kai diagrafetai to antikeimeno seeking
         }
         catch(NumberFormatException ex) {
             ex.printStackTrace();
         }
 
-        //connection
-        Connection con = new Database().connect();
-        try{
-            //query
-            String insertParked = "insert into parked_driver" +
-                    "values(?, ?, ?, ?, ?)";
-            PreparedStatement ps = con.prepareStatement(insertParked);
-            ps.setString(1, super.getUsername());
-            ps.setFloat(2, super.getLatitude());
-            ps.setFloat(3, super.getLongitude());
-            ps.setTimestamp(4, timestamp);
-            ps.setInt(5, timeEstimate);
-            ps.close();
-        }
-        catch(SQLException e){
-            e.printStackTrace();
-        }
     }
 
     public void locationCheck(Request req) {
