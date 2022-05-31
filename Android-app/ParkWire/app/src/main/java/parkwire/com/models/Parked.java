@@ -28,7 +28,6 @@ public class Parked extends Driver {
         this.timeEstimate = timeEstimate;
         Database db = new Database();
         Connection con = db.connect();
-        System.out.println(username);
         try {
             PreparedStatement pstm = con.prepareStatement("INSERT INTO parked_driver VALUES (?, ?, ?, ?, ?)");
             pstm.setString(1, username);
@@ -36,9 +35,9 @@ public class Parked extends Driver {
             pstm.setFloat(3, this.parkingLocLongitude);
             pstm.setTimestamp(4, this.timestamp);
             pstm.setTimestamp(5, this.timeEstimate);
-            if(pstm.executeUpdate() != 0 ){
+            if (pstm.executeUpdate() != 0) {
                 System.out.println("Parked Driver inserted");
-            }else
+            } else
                 System.out.println("Something went wrong");
 
         } catch (SQLException e) {
@@ -69,6 +68,20 @@ public class Parked extends Driver {
 
     public void setTimeEstimate(Timestamp timeEstimate) {
         this.timeEstimate = timeEstimate;
+        Database db = new Database();
+        Connection con = db.connect();
+        try {
+            PreparedStatement pstm = con.prepareStatement("UPDATE parked_driver SET timeestimate = ? WHERE username = ?");
+            pstm.setTimestamp(1, timeEstimate);
+            pstm.setString(2, this.getUsername());
+            if (pstm.executeUpdate() != 0) {
+                System.out.println("Time Estimate Updated");
+            } else
+                System.out.println("Something went wrong");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void setTimestamp(Timestamp timestamp) {
