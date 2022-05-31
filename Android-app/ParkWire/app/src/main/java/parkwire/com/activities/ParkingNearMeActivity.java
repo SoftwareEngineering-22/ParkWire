@@ -58,6 +58,7 @@ import androidx.appcompat.widget.SearchView;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Scanner;
 
 import parkwire.com.R;
 import parkwire.com.models.Paid;
@@ -124,7 +125,22 @@ public class ParkingNearMeActivity extends AppCompatActivity
             public void onClick(View view) {
                 Paid[] parkings = seekingDriver.searchPaid();
                 for(int i=0; i<parkings.length; i++)
-                    System.out.println(parkings[i].getCost());
+                    System.out.println(i+". " + parkings[i].introduce());
+
+                Scanner myObj = new Scanner(System.in);
+                System.out.println("Pick: ");
+                int choice = myObj.nextInt();
+                Paid myParking = parkings[choice];
+                System.out.println("You picked: " + myParking.introduce());
+
+                System.out.println("How long are you willing to stay?");
+                int time = myObj.nextInt();
+                System.out.println("Total cost: " + myParking.calculateCost(time));
+                System.out.println("Proceed to request?");
+                System.out.println("1. Yes\n 2.No");
+
+                choice = myObj.nextInt();
+                // make request here
             }
         });
 
