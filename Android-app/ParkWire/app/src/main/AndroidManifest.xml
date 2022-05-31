@@ -42,6 +42,9 @@
         <activity
             android:name=".activities.ParkingNearMeActivity"
             android:exported="false"/>
+        <activity
+            android:name=".activities.EditEstimatedTimeActivity"
+            android:exported="false"/>
 
     </application>
 
