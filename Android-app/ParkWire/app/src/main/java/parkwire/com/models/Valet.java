@@ -36,6 +36,32 @@ class Valet extends User {
         return -1;
     }
 
+    public void showAvailableSeatsForm(Paid pp){
+        Console console = System.console();
+        System.out.println("Update current capacity");
+        Scanner sc = new Scanner(console.reader());
+        int c = sc.nextInt();
+        pp.setCapacity(c);
+
+        Connection con = new Database().connect();
+
+        String q = "UPDATE paid_parking as pp" +
+                "SET capacity = ?" +
+                "JOIN users as u ON u.user_id = pp.user_id" +
+                "WHERE u.username = ?";
+        PreparedStatement pst = null;
+        try{
+            pst = con.prepareStatement(q);
+            pst.setInt(1, c);
+            pst.setString(2, super.getUsername());
+            ResultSet rs = pst.executeQuery();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
     public void saveAvailableSeats(int cap) {
         Connection con = new Database().connect();
         try {
