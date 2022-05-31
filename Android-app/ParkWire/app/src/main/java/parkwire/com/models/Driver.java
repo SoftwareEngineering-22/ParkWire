@@ -63,20 +63,33 @@ public class Driver extends User {
     }
 
     public void viewHistory(){
-        String history_q = "select * from history as h" +
-                "inner join drivers as dr on dr.user_id = h.user_id" +
-                "inner join user as u on u.user_id = dr.user_id" +
-                "where u.username = ?";
-
+        String paid_history_q = "select * from driver_history as dh" +
+                "inner join drivers as dr on dr.username = dh.username" +
+                "where h.username = ?";
+        String history_q = "select * from parked_driver as pd"+
+                            "inner join drivers as d on d.username = pd.username"+
+                            "where d.username = ?";
         Connection con = new Database().connect();
         try{
-            PreparedStatement ps = con.prepareStatement(history_q);
-            ps.setString(1, super.getUsername());
-            ResultSet rs = ps.executeQuery();
-            while(rs.next()){
-                System.out.println("Date: " + rs.getTimestamp("parked") + "Left: " + rs.getTimestamp("left_parking") + "Paid: " + rs.getFloat("payment ") + "\n");
+            PreparedStatement ps_paid = con.prepareStatement(paid_history_q);
+            PreparedStatement ps_h = con.prepareStatement(history_q);
+            ps_paid.setString(1, super.getUsername());
+            ps_h.setString(1, super.getUsername());
+            ResultSet rs_paid = ps_paid.executeQuery();
+            ResultSet rs_history = ps_h.executeQuery();
+
+
+            while(rs_paid.next()){
+                System.out.println("Your paid parking:");
+                System.out.println("Date: " + rs_paid.getTimestamp("parked") + "Left: " + rs_paid.getTimestamp("left_parking") + "Paid: " + rs_paid.getFloat("payment ") + "\n");
             }
-            ps.close();
+            while(rs_history.next()){
+                System.out.println("Your Free and Meter parking:");
+                System.out.println("Date: " + rs_history.getTimestamp("parkedtimestamp")+ "Longitude: " + rs_history.getFloat("parkingloclatitude") + "Latitude:"
+                        + rs_history.getFloat("parkingloclatitude"));
+            }
+            ps_paid.close();
+            ps_h.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }

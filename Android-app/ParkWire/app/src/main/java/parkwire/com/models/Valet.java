@@ -57,4 +57,26 @@ class Valet extends User{
     public int updateRequest(){
         return 1;
     }
+
+    public void viewHistory(){
+        String history_q = "select * from paid_parking as pp" +
+                "inner join valet as v on v.username = pp.username" +
+                "inner join driver_history as dh on dh.parking_id = pp.id"+
+                "where h.username = ?";
+        Connection con = new Database().connect();
+        try{
+            PreparedStatement pstm = con.prepareStatement(history_q);
+            pstm.setString(1, super.getUsername());
+            ResultSet rs_paid = pstm.executeQuery();
+
+
+            while(rs_paid.next()){
+                System.out.println("Date: " + rs_paid.getTimestamp("parked") + "Left: " + rs_paid.getTimestamp("left_parking") + "Paid: " + rs_paid.getFloat("payment ") + "\n");
+            }
+            pstm.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
 }

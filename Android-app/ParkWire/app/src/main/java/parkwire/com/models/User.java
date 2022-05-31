@@ -1,5 +1,9 @@
 package parkwire.com.models;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -40,22 +44,56 @@ public class User{
         return matcher.matches();
     }
 
-    public int changeUsername(String newUsername){
+    public void changeUsername(String newUsername){
         if (validateEmail(newUsername)) {
-            this.username = newUsername;
-            return 1;
+            Connection con = new Database().connect();
+            // check if already  exists
+            try {
+                boolean exists = true;
+                PreparedStatement pstm = con.prepareStatement("SELECT username from users where username = ?");
+                pstm.setString(1, newUsername);
+                ResultSet rs = pstm.executeQuery();
+                if (rs.next()){
+                    if(!rs.getString("username").equals(newUsername)) exists = false;
+                }
+
+                if (!exists){
+                    pstm = con.prepareStatement("update users set username = ? where email = ?");
+                    pstm.setString(1, newUsername);
+                    pstm.setString(2, this.getEmail());
+                    if(pstm.executeUpdate() != 0 ){
+                        System.out.println("Username updated successfully");
+                        this.username = newUsername;
+                    }else
+                        System.out.println("Something went wrong");
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }else {
             System.out.println("Invalid Username");
-            return -1;
         }
     }
 
     public void changePassword(String newPass){
         if (validateEmail(newPass)) {
-            this.password = newPass;
-        }else{
-            System.out.println("Invalid password");
-        }
+            Connection con = new Database().connect();
+            try {
+                PreparedStatement pstm = con.prepareStatement("UPDATE users SET password = ? WHERE username = ?");
+                pstm.setString(1, newPass);
+                pstm.setString(2, this.getUsername());
+                if (pstm.executeUpdate() != 0){
+                    System.out.println("Password Updated sucessfully");
+                    this.password = newPass;
+                }
+                else
+                    System.out.println("Something went wrong");
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }else
+            System.out.println("Invalid Password");
     }
 
     public void viewHistory(){
