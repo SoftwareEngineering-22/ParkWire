@@ -61,11 +61,6 @@ public class Parked extends Driver {
         return timeEstimate;
     }
 
-    public void setParkedLocation(float parkingLocLatitude, float parkingLocLongitude) {
-        this.parkingLocLatitude = parkingLocLatitude;
-        this.parkingLocLongitude = parkingLocLongitude;
-    }
-
     public void setTimeEstimate(Timestamp timeEstimate) {
         this.timeEstimate = timeEstimate;
         Database db = new Database();
