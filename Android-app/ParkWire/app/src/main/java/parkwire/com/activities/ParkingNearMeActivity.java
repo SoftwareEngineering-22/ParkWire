@@ -49,6 +49,7 @@ import androidx.core.content.ContextCompat;
 
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -57,8 +58,10 @@ import androidx.appcompat.widget.SearchView;
 
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.List;
 
+import parkwire.com.R;
+import parkwire.com.models.Paid;
+import parkwire.com.models.Seeking;
 
 
 /**
@@ -92,6 +95,10 @@ public class ParkingNearMeActivity extends AppCompatActivity
 
     private ImageButton settingsBtn1;
 
+    // Seeking Driver
+    //String email, String username, String pass, float lat, float lon, int pts
+    Seeking seekingDriver = new Seeking("camelKitrino@gmail.com", "camel", "123456", 38.2464816f, 21.7372183f, 0);
+
     //SearchView searchView;
 
     //Places.initialize(getApplicationContext(), );
@@ -105,8 +112,19 @@ public class ParkingNearMeActivity extends AppCompatActivity
 
         settingsBtn1 = findViewById(R.id.settingsButton);
         settingsBtn1.setOnClickListener(new View.OnClickListener(){
+            @Override
             public void onClick(View v) {
                 startActivity(new Intent(ParkingNearMeActivity.this, SettingsActivity.class));
+            }
+        });
+
+        Button runButton = (Button) findViewById(R.id.runBtn);
+        runButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Paid[] parkings = seekingDriver.searchPaid();
+                for(int i=0; i<parkings.length; i++)
+                    System.out.println(parkings[i].getCost());
             }
         });
 

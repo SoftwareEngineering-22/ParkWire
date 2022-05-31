@@ -2,6 +2,7 @@ package parkwire.com.models;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.Scanner;
@@ -14,6 +15,32 @@ public class Seeking extends Driver{
         super(email, username, pass, lat, lon, pts);
     }
 
+    public Paid[] searchPaid(){
+        Connection con = new Database().connect();
+        String query = "SELECT pp.parkingloclatitude, pp.parkingloclongitude, pp.capacity" +
+                        "pp.cost, pp.contact_information, FROM paid_parking as pp " +
+                        "INNER JOIN valet as v ON v.username = pp.username;";
+        Paid[] arr = new Paid[10];
+
+        try {
+            PreparedStatement pstm = con.prepareStatement(query);
+            ResultSet rs = pstm.executeQuery();
+
+            int i = 0;
+            while(rs.next()){
+                if(i <= 10)
+                    arr[i] = new Paid(rs.getFloat(1), rs.getFloat(2), false, false, rs.getInt(3), rs.getFloat(4), rs.getString(5));
+                i += 1;
+            }
+
+            rs.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return arr;
+    }
     public void parkedIt(){
 
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
