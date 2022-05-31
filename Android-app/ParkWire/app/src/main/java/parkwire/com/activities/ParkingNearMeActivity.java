@@ -11,28 +11,55 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-package parkwire.com.activities;
+package parkwire.com;
 
 import android.Manifest.permission;
 import android.annotation.SuppressLint;
+
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnMyLocationButtonClickListener;
 import com.google.android.gms.maps.GoogleMap.OnMyLocationClickListener;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.common.api.Status;
+import com.google.android.libraries.places.api.Places;
+import com.google.android.libraries.places.api.model.Place;
+import com.google.android.libraries.places.api.model.RectangularBounds;
+import com.google.android.libraries.places.api.model.TypeFilter;
+import com.google.android.libraries.places.api.net.PlacesClient;
+import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
+import com.google.android.libraries.places.widget.listener.PlaceSelectionListener;
+
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
+import android.location.Address;
+import android.location.Geocoder;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import android.widget.Toast;
 
-import parkwire.com.R;
+import android.util.Log;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.Toast;
+import androidx.appcompat.widget.SearchView;
+
+
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
+
+
 
 /**
  * This demo shows how GMS Location can be used to check for changes to the users location.  The "My
@@ -63,15 +90,119 @@ public class ParkingNearMeActivity extends AppCompatActivity
 
     private GoogleMap map;
 
+    private ImageButton settingsBtn1;
+
+    //SearchView searchView;
+
+    //Places.initialize(getApplicationContext(), );
+
+    //PlaceAutocompleteFragment placeAutoComplete;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parkingnearme);
 
-        SupportMapFragment mapFragment =
+        settingsBtn1 = findViewById(R.id.settingsButton);
+        settingsBtn1.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                startActivity(new Intent(ParkingNearMeActivity.this, SettingsActivity.class));
+            }
+        });
+
+        //searchView = findViewById(R.id.idSearchView);
+
+       /* SupportMapFragment mapFragment =
                 (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);*/
+
+        Places.initialize(getApplicationContext(), "MAPS_API_KEY" );
+
+        PlacesClient placesClient = Places.createClient(this);
+
+        AutocompleteSupportFragment autocompleteFragment = (AutocompleteSupportFragment)
+                getSupportFragmentManager().findFragmentById(R.id.autocomplete_fragment);
+
+        autocompleteFragment.setTypeFilter(TypeFilter.ESTABLISHMENT);
+
+        autocompleteFragment.setLocationBias(RectangularBounds.newInstance(
+                new LatLng(38.22635547992303, 21.724502927121215),
+                new LatLng(38.31080111656412, 21.82332873605041)
+        ));
+        autocompleteFragment.setCountries("IN");
+
+        autocompleteFragment.setPlaceFields(Arrays.asList(Place.Field.ID,Place.Field.NAME));
+
+        autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
+            @Override
+            public void onError( Status status) {
+                Log.i("dialog", "An error occurred: " + status);
+            }
+
+            @Override
+            public void onPlaceSelected( Place place) {
+                Log.i("dialog", "Place: "+ place.getName() + ", " + place.getId());
+            }
+        });
+
+        SupportMapFragment mapFragment =
+              (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+
+
+
+
+        /*searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                // on below line we are getting the
+                // location name from search view.
+                String location = searchView.getQuery().toString();
+
+                // below line is to create a list of address
+                // where we will store the list of all address.
+                List<Address> addressList = null;
+
+                // checking if the entered location is null or not.
+                if (location != null || location.equals("")) {
+                    // on below line we are creating and initializing a geo coder.
+                    Geocoder geocoder = new Geocoder(ParkingNearMeActivity.this);
+                    try {
+                        // on below line we are getting location from the
+                        // location name and adding that location to address list.
+                        addressList = geocoder.getFromLocationName(location, 1);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    // on below line we are getting the location
+                    // from our list a first position.
+                    Address address = addressList.get(0);
+
+                    // on below line we are creating a variable for our location
+                    // where we will add our locations latitude and longitude.
+                    LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
+
+                    // on below line we are adding marker to that position.
+                    map.addMarker(new MarkerOptions().position(latLng).title(location));
+
+                    // below line is to animate camera to that position.
+                    map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
+                }
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });*/
+
+
         mapFragment.getMapAsync(this);
     }
+
+
+
+
 
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
