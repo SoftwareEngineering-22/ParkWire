@@ -34,21 +34,18 @@ public class Seeking extends Driver{
         return arr;
     }
 
-    public void parkedIt(){
-
-        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+       public void parkedIt(String estStr){
         Timestamp timeEstimate;
         //Scanner estScanner = new Scanner(System.in);
-        String estStr = "2022-05-31 17:19:00.000";
        // String estStr = estScanner.next();
         try {
             timeEstimate = Timestamp.valueOf(estStr);
             new Parked(getEmail(), getUsername(), getPassword(), getLatitude(), getLongitude(), getPoints(), timeEstimate);
-            //kai diagrafetai to antikeimeno seeking
         }
         catch(NumberFormatException ex) {
             ex.printStackTrace();
         }
+
     }
 
     public void locationCheck(Request req) {

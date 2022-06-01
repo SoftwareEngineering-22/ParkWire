@@ -8,7 +8,11 @@ import android.widget.TimePicker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.sql.Timestamp;
+
 import parkwire.com.R;
+import parkwire.com.models.Parked;
+import parkwire.com.models.User;
 
 public class EditEstimatedTimeActivity extends AppCompatActivity {
 
@@ -22,5 +26,16 @@ public class EditEstimatedTimeActivity extends AppCompatActivity {
         EditText currentTime = (EditText) findViewById(R.id.currentTime);
         EditText estimatedDate = (EditText) findViewById(R.id.estimatedDate);
         EditText estimatedTime = (EditText) findViewById(R.id.estimatedTime);
+        User u = new User("", "", "");
+        Parked p = new Parked(u.getEmail(), u.getUsername(), u.getPassword(), 3, 2, 1, null);
+
+        if (p.calcRemEstimate() < 10 * 60) { // κάτω από 10 λεπτά
+            p.Notify();
+            if (edit != null) {
+                p.setTimeEstimate(p.getTimeEstimate());
+            }
+        }
+
+
     }
 }

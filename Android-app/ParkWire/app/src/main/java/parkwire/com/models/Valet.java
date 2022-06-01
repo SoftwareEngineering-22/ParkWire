@@ -16,6 +16,14 @@ public class Valet extends User {
         this.info = info;
     }
 
+    public String getBusinessName(){
+        return this.businessName;
+    }
+
+    public String getInfo(){
+        return this.info;
+    }
+
     public int showAvailableSeats() {
         Connection con = new Database().connect();
 
@@ -91,7 +99,7 @@ public class Valet extends User {
         Database db = new Database();
         Connection con = db.connect();
         try {
-            PreparedStatement pstm = con.prepareStatement("INSERT INTO paid_parking VALUES(DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?");
+            PreparedStatement pstm = con.prepareStatement("INSERT INTO paid_parking VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?)");
             pstm.setString(1, getUsername());
             pstm.setDouble(2, lat);
             pstm.setDouble(3, lon);
@@ -111,16 +119,17 @@ public class Valet extends User {
 
     }
 
-    public void editBusiness(double lat, double lon, int capacity, int cost, String contact_info, String work_hours, String address) {
+    public void editBusiness(double lat, double lon, int capacity, int cost, String contact_info, String work_hours, String address, int id) {
         Database db = new Database();
         Connection con = db.connect();
 
-        if (lat != 0 || lon != 0) {
+        if (lat != 0 && lon != 0) {
             try {
-                PreparedStatement pstm = con.prepareStatement("UPDATE parked_driver SET parkingloclatitude = ?, parkingloclongitude = ? WHERE username = ?");
+                PreparedStatement pstm = con.prepareStatement("UPDATE paid_parking SET parkingloclatitude = ?, parkingloclongitude = ? WHERE username = ? AND id = ?");
                 pstm.setDouble(1, lat);
                 pstm.setDouble(2, lon);
                 pstm.setString(3, this.getUsername());
+                pstm.setInt(4, id);
                 if (pstm.executeUpdate() != 0) {
                     System.out.println("Paid Parking Location updated");
                 } else
@@ -133,9 +142,10 @@ public class Valet extends User {
 
         if (capacity != 0) {
             try {
-                PreparedStatement pstm = con.prepareStatement("UPDATE parked_driver SET capacity = ? WHERE username = ?");
+                PreparedStatement pstm = con.prepareStatement("UPDATE paid_parking SET capacity = ? WHERE username = ? AND id = ?");
                 pstm.setInt(1, capacity);
                 pstm.setString(2, this.getUsername());
+                pstm.setInt(3, id);
                 if (pstm.executeUpdate() != 0) {
                     System.out.println("Paid Parking capacity updated");
                 } else
@@ -148,9 +158,10 @@ public class Valet extends User {
 
         if (cost != 0) {
             try {
-                PreparedStatement pstm = con.prepareStatement("UPDATE parked_driver SET cost = ? WHERE username = ?");
+                PreparedStatement pstm = con.prepareStatement("UPDATE paid_parking SET cost = ? WHERE username = ? AND id = ?");
                 pstm.setInt(1, cost);
                 pstm.setString(2, this.getUsername());
+                pstm.setInt(3, id);
                 if (pstm.executeUpdate() != 0) {
                     System.out.println("Paid Parking cost updated");
                 } else
@@ -163,9 +174,10 @@ public class Valet extends User {
 
         if (contact_info != null) {
             try {
-                PreparedStatement pstm = con.prepareStatement("UPDATE parked_driver SET contact_info = ? WHERE username = ?");
+                PreparedStatement pstm = con.prepareStatement("UPDATE paid_parking SET contact_info = ? WHERE username = ? AND id = ?");
                 pstm.setString(1, contact_info);
                 pstm.setString(2, this.getUsername());
+                pstm.setInt(3, id);
                 if (pstm.executeUpdate() != 0) {
                     System.out.println("Paid Parking contact_info updated");
                 } else
@@ -178,9 +190,10 @@ public class Valet extends User {
 
         if (work_hours != null) {
             try {
-                PreparedStatement pstm = con.prepareStatement("UPDATE parked_driver SET work_hours = ? WHERE username = ?");
+                PreparedStatement pstm = con.prepareStatement("UPDATE paid_parking SET work_hours = ? WHERE username = ? AND id = ?");
                 pstm.setString(1, work_hours);
                 pstm.setString(2, this.getUsername());
+                pstm.setInt(3, id);
                 if (pstm.executeUpdate() != 0) {
                     System.out.println("Paid Parking work_hours updated");
                 } else
@@ -193,9 +206,10 @@ public class Valet extends User {
 
         if (address != null) {
             try {
-                PreparedStatement pstm = con.prepareStatement("UPDATE parked_driver SET address = ? WHERE username = ?");
+                PreparedStatement pstm = con.prepareStatement("UPDATE paid_parking SET address = ? WHERE username = ? AND id = ?");
                 pstm.setString(1, address);
                 pstm.setString(2, this.getUsername());
+                pstm.setInt(3, id);
                 if (pstm.executeUpdate() != 0) {
                     System.out.println("Paid Parking address updated");
                 } else
