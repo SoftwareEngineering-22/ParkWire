@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-class Valet extends User {
+public class Valet extends User {
     private String businessName;
     private String info;
 
