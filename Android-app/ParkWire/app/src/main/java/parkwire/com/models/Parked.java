@@ -91,4 +91,8 @@ public class Parked extends Driver {
         return TimeUnit.MILLISECONDS.toSeconds(diff);
     }
 
+    public void Notify(){
+
+    }
+
 }

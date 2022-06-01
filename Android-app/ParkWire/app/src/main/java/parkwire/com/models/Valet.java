@@ -16,6 +16,14 @@ public class Valet extends User {
         this.info = info;
     }
 
+    public String getBusinessName(){
+        return this.businessName;
+    }
+
+    public String getInfo(){
+        return this.info;
+    }
+
     public int showAvailableSeats() {
         Connection con = new Database().connect();
 
