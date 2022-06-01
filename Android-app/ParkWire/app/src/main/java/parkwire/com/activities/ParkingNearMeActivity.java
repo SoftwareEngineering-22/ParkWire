@@ -64,14 +64,6 @@ import parkwire.com.R;
 import parkwire.com.models.Paid;
 import parkwire.com.models.Seeking;
 
-
-/**
- * This demo shows how GMS Location can be used to check for changes to the users location.  The "My
- * Location" button uses GMS Location to set the blue dot representing the users location.
- * Permission for {@link android.Manifest.permission#ACCESS_FINE_LOCATION} and {@link
- * android.Manifest.permission#ACCESS_COARSE_LOCATION} are requested at run time. If either
- * permission is not granted, the Activity is finished with an error message.
- */
 public class ParkingNearMeActivity extends AppCompatActivity
         implements
         OnMyLocationButtonClickListener,
@@ -79,26 +71,14 @@ public class ParkingNearMeActivity extends AppCompatActivity
         OnMapReadyCallback,
         ActivityCompat.OnRequestPermissionsResultCallback {
 
-    /**
-     * Request code for location permission request.
-     *
-     * @see #onRequestPermissionsResult(int, String[], int[])
-     */
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
-
-    /**
-     * Flag indicating whether a requested permission has been denied after returning in {@link
-     * #onRequestPermissionsResult(int, String[], int[])}.
-     */
     private boolean permissionDenied = false;
-
     private GoogleMap map;
-
     private ImageButton settingsBtn1;
 
     // Seeking Driver
-    //String email, String username, String pass, float lat, float lon, int pts
-    Seeking seekingDriver = new Seeking("camelKitrino@gmail.com", "camel", "123456", 38.2464816f, 21.7372183f, 0);
+    Seeking seekingDriver = new Seeking("camelKitrino@gmail.com", "camel", "123456",
+            38.2464816, 21.7372183, 0);
 
     //SearchView searchView;
 
@@ -111,36 +91,14 @@ public class ParkingNearMeActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parkingnearme);
 
+        // allow web
+        ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.INTERNET}, PackageManager.PERMISSION_GRANTED);
+
         settingsBtn1 = findViewById(R.id.settingsButton);
         settingsBtn1.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ParkingNearMeActivity.this, SettingsActivity.class));
-            }
-        });
-
-        Button runButton = (Button) findViewById(R.id.runBtn);
-        runButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Paid[] parkings = seekingDriver.searchPaid();
-                for(int i=0; i<parkings.length; i++)
-                    System.out.println(i+". " + parkings[i].introduce());
-
-                Scanner myObj = new Scanner(System.in);
-                System.out.println("Pick: ");
-                int choice = myObj.nextInt();
-                Paid myParking = parkings[choice];
-                System.out.println("You picked: " + myParking.introduce());
-
-                System.out.println("How long are you willing to stay?");
-                int time = myObj.nextInt();
-                System.out.println("Total cost: " + myParking.calculateCost(time));
-                System.out.println("Proceed to request?");
-                System.out.println("1. Yes\n 2.No");
-
-                choice = myObj.nextInt();
-                // make request here
             }
         });
 

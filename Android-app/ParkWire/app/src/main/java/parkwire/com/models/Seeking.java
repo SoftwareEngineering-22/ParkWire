@@ -5,34 +5,26 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
-import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Seeking extends Driver{
-
-    private Timestamp paidEstimate;
 
     public Seeking(String email, String username, String pass, double lat, double lon, int pts){
         super(email, username, pass, lat, lon, pts);
     }
 
-    public Paid[] searchPaid(){
+    public ArrayList<Paid> searchPaid(){
         Connection con = new Database().connect();
-        String query = "SELECT pp.parkingloclatitude, pp.parkingloclongitude, pp.capacity" +
-                        "pp.cost, pp.contact_information, FROM paid_parking as pp " +
-                        "INNER JOIN valet as v ON v.username = pp.username;";
-        Paid[] arr = new Paid[10];
+        String query = "SELECT * FROM paid_parking as pp INNER JOIN valet as v ON v.username = pp.username";
+        ArrayList<Paid> arr = new ArrayList<Paid>();
 
         try {
             PreparedStatement pstm = con.prepareStatement(query);
             ResultSet rs = pstm.executeQuery();
 
-            int i = 0;
-            while(rs.next()){
-                if(i <= 10)
-                    arr[i] = new Paid(rs.getFloat(1), rs.getFloat(2), false, false, rs.getInt(3), rs.getFloat(4), rs.getString(5));
-                i += 1;
-            }
-
+            while(rs.next())
+                arr.add(new Paid(rs.getDouble("parkingloclatitude"), rs.getDouble("parkingloclongitude"), false,
+                        false, rs.getInt("capacity"), rs.getFloat("cost"), rs.getString("info")));
             rs.close();
 
         } catch (SQLException e) {
@@ -65,24 +57,9 @@ public class Seeking extends Driver{
         }
     }
 
-    public void setPaidTime(){
-        System.out.println("Insert your estimate to arrive:");
-        Scanner est = new Scanner(System.in);
-        String estStr = est.next();
-        try {
-            this.paidEstimate = Timestamp.valueOf(estStr);
-        }
-        catch(NumberFormatException ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    public Timestamp getPaidTime(){
-        return this.paidEstimate;
-    }
-
-    public float calculateCost(Paid pp){
-        float c = getPaidTime().getTime() * pp.getCost();
-        return c;
+    public int setPaidTime(){
+        int time = 2;
+        System.out.println("How long are you willing to stay? (in hours)");
+        return time;
     }
 }

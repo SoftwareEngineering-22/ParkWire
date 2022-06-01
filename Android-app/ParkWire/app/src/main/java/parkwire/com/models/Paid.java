@@ -13,16 +13,16 @@ public class Paid extends Parking{
     }
 
     public String introduce(){
-        return "Capacity: " + this.capacity + "Cost: " + this.cost + "Info: " + this.info;
+        return "Location: (" + this.getLatitude() + "," + this.getLongitude() + ")" + " Capacity: "
+                + this.capacity + " Cost: " + this.cost + " Info: " + this.info;
     }
 
     public float calculateCost(int time){return this.cost * time;}
 
-    public void setCost(){
-        this.cost = cost;
-    }
+    public void setCost(){this.cost = cost;}
 
-    public float getCost(){
-        return cost;
-    }
+    public float getCost(){return cost;}
+
+    public void setCapacity(int c) {this.capacity=c;}
+
 }

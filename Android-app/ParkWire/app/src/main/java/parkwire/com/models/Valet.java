@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Scanner;
 
 class Valet extends User {
     private String businessName;
@@ -37,9 +38,8 @@ class Valet extends User {
     }
 
     public void showAvailableSeatsForm(Paid pp){
-        Console console = System.console();
         System.out.println("Update current capacity");
-        Scanner sc = new Scanner(console.reader());
+        Scanner sc = new Scanner(System.in);
         int c = sc.nextInt();
         pp.setCapacity(c);
 
