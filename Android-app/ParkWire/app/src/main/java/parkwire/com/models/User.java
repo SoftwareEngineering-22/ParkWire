@@ -25,20 +25,20 @@ public class User{
     public String getEmail(){return this.email;}
     public String getPassword(){return this.password;}
 
-    public static boolean validateUsername(final String username) {
+    public boolean validateUsername(final String username) {
         String regex = "^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(username);
         return matcher.matches();
     }
-    public static boolean validatePassword(final String pswd) {
+    public boolean validatePassword(final String pswd) {
         String regex = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(pswd);
         return matcher.matches();
     }
 
-    public static boolean validateEmail(final String email) {
+    public boolean validateEmail(final String email) {
         String regex = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(email);
@@ -114,19 +114,23 @@ public class User{
         }
     }
 
-    public void changeUsername(String newUsername){
-        if (validateEmail(newUsername)) {
+    public void showError(){System.out.println("Invalid input!");}
+
+    public void changeUsername(){
+        String newUsername = this.showUsernameForm();
+        if (this.validateUsername(newUsername)) {
             this.uploadUsername(newUsername);
         }else {
-            System.out.println("Invalid Username");
+            this.showError();
         }
     }
 
-    public void changePassword(String newPass){
-        if (validateEmail(newPass)) {
+    public void changePassword(){
+        String newPass = this.showPasswordForm();
+        if (this.validatePassword(newPass)) {
             this.uploadPassword(newPass);
         }else
-            System.out.println("Invalid Password");
+            this.showError();
     }
 
     public void viewHistory(){

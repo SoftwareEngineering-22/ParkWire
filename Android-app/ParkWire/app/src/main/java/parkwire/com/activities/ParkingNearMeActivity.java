@@ -124,7 +124,8 @@ public class ParkingNearMeActivity extends AppCompatActivity
         runBtn = findViewById(R.id.runBtn);
         runBtn.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
-                //startActivity(new Intent(ParkingNearMeActivity.this, HomeActivity.class));
+                startActivity(new Intent(ParkingNearMeActivity.this, MapsActivity.class));
+
                 // Seeking Driver
                 Seeking seekingDriver = new Seeking("camelKitrino@gmail.com", "camel", "123456",
                         38.2464816, 21.7372183, 0);
@@ -147,7 +148,6 @@ public class ParkingNearMeActivity extends AppCompatActivity
                 System.out.println("total cost: " + cost);
                 System.out.println("Proceed to reservation?");
                 System.out.println("1. Yes\n 2.No");
-
             }
         });
 

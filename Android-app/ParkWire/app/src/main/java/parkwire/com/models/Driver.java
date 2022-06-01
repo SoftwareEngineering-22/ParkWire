@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Driver extends User {
@@ -72,15 +73,15 @@ public class Driver extends User {
             ResultSet rs_paid = ps_paid.executeQuery();
             ResultSet rs_history = ps_h.executeQuery();
 
-
             while(rs_paid.next()){
                 System.out.println("Your paid parking:");
-                System.out.println("Date: " + rs_paid.getTimestamp("parked") + "Left: " + rs_paid.getTimestamp("left_parking") + "Paid: " + rs_paid.getFloat("payment ") + "\n");
+                System.out.println("Date: " + rs_paid.getTimestamp("parked") + "Left: " + rs_paid.getTimestamp("left_parking")
+                        + "Paid: " + rs_paid.getFloat("payment ") + "\n");
             }
             while(rs_history.next()){
                 System.out.println("Your Free and Meter parking:");
-                System.out.println("Date: " + rs_history.getTimestamp("parkedtimestamp")+ "Longitude: " + rs_history.getFloat("parkingloclatitude") + "Latitude:"
-                        + rs_history.getFloat("parkingloclatitude"));
+                System.out.println("Date: " + rs_history.getTimestamp("parkedtimestamp")+ "Longitude: " +
+                        rs_history.getFloat("parkingloclatitude") + "Latitude:" + rs_history.getFloat("parkingloclatitude"));
             }
             ps_paid.close();
             ps_h.close();

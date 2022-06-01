@@ -5,7 +5,7 @@ public class Request {
     private double reqLat;
     private double reqLon;
     private Driver sender;
-    private Driver recipient;
+    private Parked recipient;
 
 
     public Request(String msg, double rlat, double rlon){

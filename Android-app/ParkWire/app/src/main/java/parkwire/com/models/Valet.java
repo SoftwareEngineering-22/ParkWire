@@ -37,30 +37,7 @@ public class Valet extends User {
         return -1;
     }
 
-    public void showAvailableSeatsForm(Paid pp){
-        System.out.println("Update current capacity");
-        Scanner sc = new Scanner(System.in);
-        int c = sc.nextInt();
-        pp.setCapacity(c);
-
-        Connection con = new Database().connect();
-
-        String q = "UPDATE paid_parking as pp" +
-                "SET capacity = ?" +
-                "JOIN users as u ON u.user_id = pp.user_id" +
-                "WHERE u.username = ?";
-        PreparedStatement pst = null;
-        try{
-            pst = con.prepareStatement(q);
-            pst.setInt(1, c);
-            pst.setString(2, super.getUsername());
-            ResultSet rs = pst.executeQuery();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-    }
+    public int showAvailableSeatsForm(){return 5;}
 
     public void saveAvailableSeats(int cap) {
         Connection con = new Database().connect();
@@ -93,7 +70,8 @@ public class Valet extends User {
 
 
             while (rs_paid.next()) {
-                System.out.println("Date: " + rs_paid.getTimestamp("parked") + "Left: " + rs_paid.getTimestamp("left_parking") + "Paid: " + rs_paid.getFloat("payment ") + "\n");
+                System.out.println("Date: " + rs_paid.getTimestamp("parked") + "Left: " + rs_paid.getTimestamp("left_parking")
+                        + "Paid: " + rs_paid.getFloat("payment ") + "\n");
             }
             pstm.close();
         } catch (SQLException e) {
@@ -107,7 +85,6 @@ public class Valet extends User {
                 "where h.username = ?";
 
         this.searchValetHistory(history_q);
-
     }
 
     public void addNewBusiness(double lat, double lon, int capacity, int cost, String contact_info, String work_hours, String address) {

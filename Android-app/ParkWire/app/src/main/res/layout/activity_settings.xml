@@ -30,7 +30,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/personal_info"
+        android:id="@+id/userBtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -51,7 +51,7 @@
 
 
     <Button
-        android:id="@+id/notify_settings"
+        android:id="@+id/passBtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -68,7 +68,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/personal_info" />
+        app:layout_constraintTop_toBottomOf="@+id/userBtn" />
 
     <Button
         android:id="@+id/pay_opt"
@@ -88,7 +88,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/notify_settings" />
+        app:layout_constraintTop_toBottomOf="@+id/passBtn" />
 
     <Button
         android:id="@+id/pay_history"
