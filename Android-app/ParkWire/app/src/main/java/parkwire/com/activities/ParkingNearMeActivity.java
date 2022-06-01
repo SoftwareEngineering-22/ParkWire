@@ -13,6 +13,7 @@
 // limitations under the License.
 package parkwire.com.activities;
 
+import parkwire.com.R;
 import android.Manifest.permission;
 import android.annotation.SuppressLint;
 
@@ -49,8 +50,8 @@ import androidx.core.content.ContextCompat;
 
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.widget.SearchView;
@@ -58,12 +59,17 @@ import androidx.appcompat.widget.SearchView;
 
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.Scanner;
+import java.util.List;
 
-import parkwire.com.R;
-import parkwire.com.models.Paid;
-import parkwire.com.models.Seeking;
 
+
+/**
+ * This demo shows how GMS Location can be used to check for changes to the users location.  The "My
+ * Location" button uses GMS Location to set the blue dot representing the users location.
+ * Permission for {@link android.Manifest.permission#ACCESS_FINE_LOCATION} and {@link
+ * android.Manifest.permission#ACCESS_COARSE_LOCATION} are requested at run time. If either
+ * permission is not granted, the Activity is finished with an error message.
+ */
 public class ParkingNearMeActivity extends AppCompatActivity
         implements
         OnMyLocationButtonClickListener,
@@ -71,14 +77,22 @@ public class ParkingNearMeActivity extends AppCompatActivity
         OnMapReadyCallback,
         ActivityCompat.OnRequestPermissionsResultCallback {
 
+    /**
+     * Request code for location permission request.
+     *
+     * @see #onRequestPermissionsResult(int, String[], int[])
+     */
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
-    private boolean permissionDenied = false;
-    private GoogleMap map;
-    private ImageButton settingsBtn1;
 
-    // Seeking Driver
-    Seeking seekingDriver = new Seeking("camelKitrino@gmail.com", "camel", "123456",
-            38.2464816, 21.7372183, 0);
+    /**
+     * Flag indicating whether a requested permission has been denied after returning in {@link
+     * #onRequestPermissionsResult(int, String[], int[])}.
+     */
+    private boolean permissionDenied = false;
+
+    private GoogleMap map;
+    private ImageButton filterBtn1;
+    private Button runBtn;
 
     //SearchView searchView;
 
@@ -89,16 +103,24 @@ public class ParkingNearMeActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_parkingnearme);
+        setContentView(R.layout.activity_maps);
 
-        // allow web
-        ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.INTERNET}, PackageManager.PERMISSION_GRANTED);
+        SupportMapFragment mapFragment =
+                (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
 
-        settingsBtn1 = findViewById(R.id.settingsButton);
-        settingsBtn1.setOnClickListener(new View.OnClickListener(){
-            @Override
+        mapFragment.getMapAsync(this);
+
+        filterBtn1 = findViewById(R.id.imageButton);
+        filterBtn1.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 startActivity(new Intent(ParkingNearMeActivity.this, SettingsActivity.class));
+            }
+        });
+
+        runBtn = findViewById(R.id.runBtn);
+        runBtn.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                startActivity(new Intent(ParkingNearMeActivity.this, HomeActivity.class));
             }
         });
 
@@ -137,8 +159,7 @@ public class ParkingNearMeActivity extends AppCompatActivity
             }
         });
 
-        SupportMapFragment mapFragment =
-                (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+
 
 
 
@@ -188,8 +209,6 @@ public class ParkingNearMeActivity extends AppCompatActivity
             }
         });*/
 
-
-        mapFragment.getMapAsync(this);
     }
 
 
