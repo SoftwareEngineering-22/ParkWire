@@ -14,6 +14,9 @@
 package parkwire.com.activities;
 
 import parkwire.com.R;
+import parkwire.com.models.Paid;
+import parkwire.com.models.Seeking;
+
 import android.Manifest.permission;
 import android.annotation.SuppressLint;
 
@@ -58,6 +61,7 @@ import androidx.appcompat.widget.SearchView;
 
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -120,7 +124,30 @@ public class ParkingNearMeActivity extends AppCompatActivity
         runBtn = findViewById(R.id.runBtn);
         runBtn.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
-                startActivity(new Intent(ParkingNearMeActivity.this, HomeActivity.class));
+                //startActivity(new Intent(ParkingNearMeActivity.this, HomeActivity.class));
+                // Seeking Driver
+                Seeking seekingDriver = new Seeking("camelKitrino@gmail.com", "camel", "123456",
+                        38.2464816, 21.7372183, 0);
+
+                ArrayList<Paid> parkings = seekingDriver.searchPaid();
+
+                for(int i=0; i<parkings.size(); i++)
+                    System.out.println(i+". " + parkings.get(i).introduce());
+                int len = parkings.size()-1;
+                System.out.println("Pick parking from 0 - " + len + ":");
+                // assume he picks 0
+                int choice = 0;
+                Paid myParking = parkings.get(choice);
+                System.out.println("You picked: " + myParking.introduce());
+                // how long to stay
+                int time = seekingDriver.setPaidTime();
+                System.out.print("For 2 hours, ");
+                // calculating cost for willing duration
+                float cost = myParking.calculateCost(time);
+                System.out.println("total cost: " + cost);
+                System.out.println("Proceed to reservation?");
+                System.out.println("1. Yes\n 2.No");
+
             }
         });
 

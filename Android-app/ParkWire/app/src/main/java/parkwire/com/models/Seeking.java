@@ -33,6 +33,7 @@ public class Seeking extends Driver{
 
         return arr;
     }
+
     public void parkedIt(){
 
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
@@ -48,7 +49,6 @@ public class Seeking extends Driver{
         catch(NumberFormatException ex) {
             ex.printStackTrace();
         }
-
     }
 
     public void locationCheck(Request req) {
