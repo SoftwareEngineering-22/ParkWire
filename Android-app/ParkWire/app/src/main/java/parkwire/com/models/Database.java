@@ -12,11 +12,11 @@ import java.sql.Statement;
 public class Database{
 
     private Connection connection = null;
-    private final String host = "ec2-34-247-172-149.eu-west-1.compute.amazonaws.com";
-    private final String database = "d20nd037ds0s85";
+    private final String host = "ec2-54-246-185-161.eu-west-1.compute.amazonaws.com";
+    private final String database = "dbvmkh521d6a8n";
     private final int port = 5432;
-    private final String username = "qtuiehpetqjxoe";
-    private final String password= "fb47d2dabf861efc95b5a1d760e0a0026d0d88dc5ae79bd87188da1cf8992840";
+    private final String username = "nugpjhlsbdyjnm";
+    private final String password= "5b8f4145604857de97e401fe1ea3c2bcf21550023ab302ea00dcbec50f89ce47";
     private final String url = "jdbc:postgresql://%s:%d/%s?sslmode=require&rejectUnauthorized=false";
 
 
